@@ -20,7 +20,7 @@ ex01 = mod 15 4
 ex02 :: Int
 ex02 = 15 `mod` 4
 
--- bracked to avoid negation sign passed as subtraction
+-- brackets to avoid negation sign passed as subtraction
 ex03 :: Int
 ex03 = (-3) - (-2)
 
@@ -60,3 +60,46 @@ f :: Int -> Int -> Int -> Int
 f a b c = a + b + c
 -- note that function application has higher precedence than any infix operators
 -- this won't work therefore... f 1 2+3 4 should be f 1 (2+3) 4
+
+-- guards
+hailstone :: Integer -> Integer
+hailstone n
+ | n `mod` 2 == 0 = n `div` 2
+ | otherwise      = 3*n + 1
+
+foo :: Integer -> Integer
+foo 0 = 16
+foo 1 
+  | "Haskell" > "C++" = 3
+  | otherwise         = 4
+foo n
+  | n < 0            = 0
+  | n `mod` 17 == 2  = -43
+  | otherwise        = n + 3
+
+-- lists
+nums, range, range2 :: [Integer]
+nums   = [1,2,3,19]
+range  = [1..100] -- [1,2,3,4,5...100]
+range2 = [2,4..100] -- [2,4,6,8,10,12,14... 100]
+
+-- hello1 and hello2 are exactly the same.
+-- String is an abbreviation for [Char]
+
+hello1 :: [Char]
+hello1 = ['h', 'e', 'l', 'l', 'o']
+
+hello2 :: String
+hello2 = "hello"
+
+helloSame = hello1 == hello2
+
+--list cons
+l1 = 1 : 2 : []
+l2 = [1,2]
+l1vsl2 = l1 == l2 -- [1,2] is shorthand here
+
+hailstoneSeq :: Integer -> [Integer]
+hailstoneSeq 1 = [1]
+hailstoneSeq n = n : hailstoneSeq (hailstone n) 
+
