@@ -103,3 +103,22 @@ hailstoneSeq :: Integer -> [Integer]
 hailstoneSeq 1 = [1]
 hailstoneSeq n = n : hailstoneSeq (hailstone n) 
 
+-- functions on list using generics
+listLength :: [a] -> Integer
+listLength []      = 0
+listLength (x:xs)  = 1 + listLength xs
+
+sumEveryTwo :: [Integer] -> [Integer]
+sumEveryTwo []         = []     -- Do nothing to the empty list
+sumEveryTwo (x:[])     = [x]    -- Do nothing to lists with a single element
+sumEveryTwo (x:(y:zs)) = (x + y) : sumEveryTwo zs
+
+-- combining functions
+
+-- The number of hailstone steps needed to reach 1 from a starting
+-- number.
+-- Because of lazy evaluation, the creation of the hailstone sequence is 
+-- interleaved with finding the length.  In Haskell its not necessary to worry
+-- about combining these sorts of functions as much as in non-lazy languages.
+hailstoneLen :: Integer -> Integer
+hailstoneLen n = listLength (hailstoneSeq n) - 1
