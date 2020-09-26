@@ -53,3 +53,13 @@ ex21 = take 10 il1 -- [2,4,6,8,10,12,14,16,18,20]
 ex22 = cycle [3,6,9] -- turns list into infinite list
 ex23 = take 5 (repeat 5) -- repeat creates infinite list of an element
 ex24 = replicate 3 10 -- [10,10,10]
+
+-- list comprehensions
+
+ex25 = [x*2 | x <- [1..10]]
+
+
+ex26 = [x*2 | x <- [1..10], x `mod` 2 == 0] -- with filter
+
+evenFour xs = [if x `mod` 3 == 0 then "BOOM" else "??" | x <- xs, odd x] -- as function
+
