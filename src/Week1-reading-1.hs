@@ -1,8 +1,7 @@
 
-{- 
+- 
   Week 1 Reading 
   Learn You a Haskell for Great Good, chapter 2
-
   http://learnyouahaskell.com/starting-out
 -}
 
@@ -53,3 +52,26 @@ ex21 = take 10 il1 -- [2,4,6,8,10,12,14,16,18,20]
 ex22 = cycle [3,6,9] -- turns list into infinite list
 ex23 = take 5 (repeat 5) -- repeat creates infinite list of an element
 ex24 = replicate 3 10 -- [10,10,10]
+
+-- list comprehensions
+
+ex25 = [x*2 | x <- [1..10]]
+ex26 = [x*2 | x <- [1..10], x `mod` 2 == 0] -- with filter
+evenFour xs = [if x `mod` 3 == 0 then "BOOM" else "??" | x <- xs, odd x] -- as function
+ex27 = [x*y| x <- [4,6,7],
+             y <- [10,11,14]] -- multiple lists
+removeNonUppercase st = [c | c <- st, c `elem` ['A'..'Z']]
+
+-- tuples
+ex28 = [("julian",20), ("joe",12)]
+ex29 = fst (8,10) -- 8
+ex30 = snd (8,10) -- 10
+ex31 = zip [1,2,3] ['a','b','c']--[(1,'a'),(2,'b'),(3,'c')]
+ex32 = zip [1,2..] ['a','b','c'] -- using infinite list
+rightTriangles = 
+  [(a,b,c) | c <- [1..10],
+             b <- [1..c],
+             a <- [1..b], 
+             a^2 + b^2 == c^2,
+             a+b+c == 24] 
+
