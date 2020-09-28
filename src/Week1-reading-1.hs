@@ -56,6 +56,7 @@ ex24 = replicate 3 10 -- [10,10,10]
 -- list comprehensions
 
 ex25 = [x*2 | x <- [1..10]]
+<<<<<<< HEAD
 ex26 = [x*2 | x <- [1..10], x `mod` 2 == 0] -- with filter
 evenFour xs = [if x `mod` 3 == 0 then "BOOM" else "??" | x <- xs, odd x] -- as function
 ex27 = [x*y| x <- [4,6,7],
@@ -74,4 +75,11 @@ rightTriangles =
              a <- [1..b], 
              a^2 + b^2 == c^2,
              a+b+c == 24] 
+=======
+
+
+ex26 = [x*2 | x <- [1..10], x `mod` 2 == 0] -- with filter
+
+evenFour xs = [if x `mod` 3 == 0 then "BOOM" else "??" | x <- xs, odd x] -- as function
+>>>>>>> 26adab22ac14e1901e056db0f1faa7f7f4aab282
 
